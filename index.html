@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Learning Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Registration Section -->
+    <div id="register-section" class="section active">
+        <div class="auth-container">
+            <h2>Create Your Account</h2>
+            <form id="register-form">
+                <input type="text" id="reg-username" placeholder="Choose Username" required>
+                <input type="password" id="reg-password" placeholder="Choose Password" required>
+                <input type="password" id="reg-confirm-password" placeholder="Confirm Password" required>
+                <input type="email" id="reg-email" placeholder="Email (Optional)">
+                <button type="submit">Create Account</button>
+            </form>
+            <p id="register-error" class="error"></p>
+            <p class="switch-text">
+                Already have an account? <a href="#" id="switch-to-login">Login here</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Login Section -->
+    <div id="login-section" class="section">
+        <div class="auth-container">
+            <h2>Welcome Back!</h2>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p id="login-error" class="error"></p>
+            <p class="switch-text">
+                New here? <a href="#" id="switch-to-register">Create an account</a>
+            </p>
+            <p class="demo-cred">Demo: username: <strong>student</strong> | password: <strong>pass123</strong></p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="hidden">
+        <div class="container">
+            <h1>Student Learning Portal</h1>
+            <nav>
+                <button data-section="dashboard" class="active">Dashboard</button>
+                <button data-section="courses">Courses</button>
+                <button data-section="notes">Notes</button>
+                <button data-section="profile">Profile</button>
+                <button id="logout">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container hidden" id="main-content">
+
+        <!-- Dashboard -->
+        <section id="dashboard" class="section active">
+            <h2>Dashboard</h2>
+            <p>Hello, <strong id="welcome-user"></strong>! Here's your progress:</p>
+            <div id="progress-overview" class="grid"></div>
+        </section>
+
+        <!-- Courses -->
+        <section id="courses" class="section">
+            <h2>My Courses</h2>
+            <button id="add-course" class="btn-primary">+ Add New Course</button>
+            <form id="add-course-form" class="form-card hidden">
+                <input type="text" id="course-name" placeholder="Course Name" required>
+                <textarea id="course-description" placeholder="Course Description (Optional)"></textarea>
+                <button type="submit">Save Course</button>
+                <button type="button" id="cancel-course">Cancel</button>
+            </form>
+            <div class="grid" id="course-list"></div>
+        </section>
+
+        <!-- Notes -->
+        <section id="notes" class="section">
+            <h2>My Notes</h2>
+            <button id="add-note" class="btn-primary">+ Add Note</button>
+            <form id="add-note-form" class="form-card hidden">
+                <select id="note-course" required></select>
+                <textarea id="note-content" placeholder="Write your note..." required></textarea>
+                <button type="submit">Save Note</button>
+                <button type="button" id="cancel-note">Cancel</button>
+            </form>
+            <div class="grid" id="notes-list"></div>
+        </section>
+
+        <!-- Profile -->
+        <section id="profile" class="section">
+            <h2>Profile Settings</h2>
+            <div class="form-card">
+                <form id="profile-form">
+                    <input type="text" id="profile-username" disabled>
+                    <input type="email" id="profile-email" placeholder="Update Email">
+                    <button type="submit">Update Profile</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Module View -->
+        <section id="module" class="section hidden">
+            <h2>Module: <span id="module-name"></span></h2>
+            <p id="module-content"></p>
+            <div class="module-actions">
+                <button id="complete-module" class="btn-primary">Mark as Complete</button>
+                <button id="start-quiz" class="btn-secondary">Take Quiz</button>
+                <button id="back-to-course" class="btn-outline">Back to Course</button>
+            </div>
+        </section>
+
+        <!-- Quiz -->
+        <section id="quiz" class="section hidden">
+            <h2>Quiz: <span id="quiz-title"></span></h2>
+            <div class="timer" id="quiz-timer">Time Left: 05:00</div>
+            <div id="quiz-questions"></div>
+            <button id="submit-quiz" class="btn-primary">Submit Quiz</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
